@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Cantik</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="calc">
+
+    <!-- LAYAR -->
+    <div class="screen">
+      <div class="mode-row">
+        <span class="mode-tag" id="degLabel">DEG</span>
+        <button class="deg-btn" onclick="toggleDeg()">toggle</button>
+      </div>
+      <div class="expr" id="expr"></div>
+      <div class="display" id="display">0</div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('basic', this)">Basic</button>
+      <button class="tab" onclick="switchTab('sci', this)">Scientific</button>
+      <button class="tab" onclick="switchTab('hist', this)">History</button>
+    </div>
+
+    <!-- BASIC -->
+    <div id="panel-basic" class="keypad">
+      <div class="row row-4">
+        <button class="key danger" onclick="clearAll()">AC</button>
+        <button class="key fn"     onclick="clearEntry()">CE</button>
+        <button class="key fn"     onclick="toggleSign()">+/−</button>
+        <button class="key op"     onclick="inputOp('/')">÷</button>
+      </div>
+      <div class="row row-4">
+        <button class="key" onclick="inputNum('7')">7</button>
+        <button class="key" onclick="inputNum('8')">8</button>
+        <button class="key" onclick="inputNum('9')">9</button>
+        <button class="key op" onclick="inputOp('*')">×</button>
+      </div>
+      <div class="row row-4">
+        <button class="key" onclick="inputNum('4')">4</button>
+        <button class="key" onclick="inputNum('5')">5</button>
+        <button class="key" onclick="inputNum('6')">6</button>
+        <button class="key op" onclick="inputOp('-')">−</button>
+      </div>
+      <div class="row row-4">
+        <button class="key" onclick="inputNum('1')">1</button>
+        <button class="key" onclick="inputNum('2')">2</button>
+        <button class="key" onclick="inputNum('3')">3</button>
+        <button class="key op" onclick="inputOp('+')">+</button>
+      </div>
+      <div class="row row-4">
+        <button class="key zero" onclick="inputNum('0')">0</button>
+        <button class="key fn"   onclick="inputDot()">.</button>
+        <button class="key eq"   onclick="calculate()">=</button>
+      </div>
+      <div class="row row-4">
+        <button class="key fn" onclick="inputOp('%')">mod</button>
+        <button class="key fn" onclick="inputOp('**')">xʸ</button>
+        <button class="key fn" onclick="inputSqrt()">√</button>
+        <button class="key fn" onclick="deleteLast()">⌫</button>
+      </div>
+    </div>
+
+    <!-- SCIENTIFIC -->
+    <div id="panel-sci" class="keypad" style="display:none">
+      <div class="row row-5">
+        <button class="key danger" onclick="clearAll()">AC</button>
+        <button class="key fn"     onclick="deleteLast()">⌫</button>
+        <button class="key fn"     onclick="inputParen('(')">(</button>
+        <button class="key fn"     onclick="inputParen(')')">)</button>
+        <button class="key op"     onclick="inputOp('/')">÷</button>
+      </div>
+      <div class="row row-5">
+        <button class="key fn" onclick="inputFunc('sin')">sin</button>
+        <button class="key fn" onclick="inputFunc('cos')">cos</button>
+        <button class="key fn" onclick="inputFunc('tan')">tan</button>
+        <button class="key fn" onclick="inputFunc('log')">log</button>
+        <button class="key op" onclick="inputOp('*')">×</button>
+      </div>
+      <div class="row row-5">
+        <button class="key fn" onclick="inputFunc('asin')">sin⁻¹</button>
+        <button class="key fn" onclick="inputFunc('acos')">cos⁻¹</button>
+        <button class="key fn" onclick="inputFunc('atan')">tan⁻¹</button>
+        <button class="key fn" onclick="inputFunc('ln')">ln</button>
+        <button class="key op" onclick="inputOp('-')">−</button>
+      </div>
+      <div class="row row-5">
+        <button class="key fn" onclick="inputNum('7')">7</button>
+        <button class="key fn" onclick="inputNum('8')">8</button>
+        <button class="key fn" onclick="inputNum('9')">9</button>
+        <button class="key fn" onclick="inputConst('Math.PI')">π</button>
+        <button class="key op" onclick="inputOp('+')">+</button>
+      </div>
+      <div class="row row-5">
+        <button class="key fn" onclick="inputNum('4')">4</button>
+        <button class="key fn" onclick="inputNum('5')">5</button>
+        <button class="key fn" onclick="inputNum('6')">6</button>
+        <button class="key fn" onclick="inputConst('Math.E')">e</button>
+        <button class="key fn" onclick="inputOp('**')">xʸ</button>
+      </div>
+      <div class="row row-5">
+        <button class="key fn" onclick="inputNum('1')">1</button>
+        <button class="key fn" onclick="inputNum('2')">2</button>
+        <button class="key fn" onclick="inputNum('3')">3</button>
+        <button class="key fn" onclick="inputSqrt()">√</button>
+        <button class="key fn" onclick="inputPercent()">%</button>
+      </div>
+      <div class="row row-5">
+        <button class="key zero" onclick="inputNum('0')">0</button>
+        <button class="key fn"   onclick="inputDot()">.</button>
+        <button class="key fn"   onclick="toggleSign()">+/−</button>
+        <button class="key eq"   onclick="calculate()">=</button>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div id="panel-hist" class="history-panel" style="display:none">
+      <div id="histList"><div class="no-hist">Belum ada riwayat.</div></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
